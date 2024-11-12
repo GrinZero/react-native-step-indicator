@@ -67,6 +67,8 @@ const StepIndicator = forwardRef<StepIndicatorRef, StepIndicatorProps>(
       onPress,
       renderStepIndicator: renderCustomStepIndicator,
       renderLabel,
+      offset = 0,
+      progressBarStyle = {},
     },
     ref
   ) => {
@@ -149,13 +151,14 @@ const StepIndicator = forwardRef<StepIndicatorRef, StepIndicatorProps>(
     };
 
     const renderProgressBar = () => {
-      let progressBarStyle: any = {
+      let currentProgressBarStyle: any = {
         backgroundColor: customStyles.separatorFinishedColor,
         position: 'absolute',
+        ...(progressBarStyle || {}),
       };
       if (direction === 'vertical') {
-        progressBarStyle = {
-          ...progressBarStyle,
+        currentProgressBarStyle = {
+          ...currentProgressBarStyle,
           left: (width - customStyles.separatorStrokeWidth) / 2,
           top: height / (2 * stepCount),
           bottom: height / (2 * stepCount),
@@ -163,11 +166,11 @@ const StepIndicator = forwardRef<StepIndicatorRef, StepIndicatorProps>(
             customStyles.separatorStrokeFinishedWidth === 0
               ? customStyles.separatorStrokeWidth
               : customStyles.separatorStrokeFinishedWidth,
-          height: progressAnim,
+          height: Animated.add(progressAnim, offset),
         };
       } else {
-        progressBarStyle = {
-          ...progressBarStyle,
+        currentProgressBarStyle = {
+          ...currentProgressBarStyle,
           top: (height - customStyles.separatorStrokeWidth) / 2,
           left: width / (2 * stepCount),
           right: width / (2 * stepCount),
@@ -175,10 +178,10 @@ const StepIndicator = forwardRef<StepIndicatorRef, StepIndicatorProps>(
             customStyles.separatorStrokeFinishedWidth === 0
               ? customStyles.separatorStrokeWidth
               : customStyles.separatorStrokeFinishedWidth,
-          width: progressAnim,
+          width: Animated.add(progressAnim, offset),
         };
       }
-      return <Animated.View style={progressBarStyle} />;
+      return <Animated.View style={currentProgressBarStyle} />;
     };
 
     const renderStepIndicator = () => {

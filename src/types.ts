@@ -4,7 +4,7 @@
 // TypeScript Version: 2.3.3
 
 import React from 'react';
-import { Animated } from 'react-native';
+import { Animated, ViewStyle } from 'react-native';
 
 export interface StepIndicatorStyles {
   /**
@@ -322,6 +322,23 @@ export interface StepIndicatorProps {
     label: string;
     currentPosition: number;
   }): React.ReactNode;
+
+  /**
+   * Offset for the progress bar
+   *
+   * @default 0
+   * @type {number}
+   * @memberof StepIndicatorProps
+   */
+  offset?: number;
+
+  /**
+   * Style for the progress bar
+   *
+   * @type {ViewStyle}
+   * @memberof StepIndicatorProps
+   */
+  progressBarStyle?: ViewStyle;
 }
 
 export default class StepIndicator extends React.Component<
