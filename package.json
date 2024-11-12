@@ -1,6 +1,6 @@
 {
-  "name": "react-native-step-indicator",
-  "version": "1.0.3",
+  "name": "@sourcebug/react-native-step-indicator",
+  "version": "1.0.0",
   "description": "A simple react-native implementation of a step indicator widget compatible with ViewPager and Flatlist",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -25,7 +25,7 @@
     "release": "release-it",
     "example": "yarn --cwd example",
     "pods": "cd example && pod-install --quiet",
-    "bootstrap": "yarn example && yarn && yarn pods"
+    "bootstrap": "pnpm example && pnpm && pnpm pods"
   },
   "keywords": [
     "react-native",
@@ -79,7 +79,7 @@
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "yarn lint && yarn typescript"
+      "pre-commit": "pnpm lint && pnpm typescript"
     }
   },
   "eslintConfig": {

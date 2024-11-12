@@ -4,6 +4,7 @@
 // TypeScript Version: 2.3.3
 
 import React from 'react';
+import { Animated } from 'react-native';
 
 export interface StepIndicatorStyles {
   /**
@@ -327,3 +328,57 @@ export default class StepIndicator extends React.Component<
   StepIndicatorProps,
   {}
 > {}
+
+export interface DefaultStepIndicatorStyles {
+  stepIndicatorSize: number;
+  currentStepIndicatorSize: number;
+  separatorStrokeWidth: number;
+  separatorStrokeUnfinishedWidth: number;
+  separatorStrokeFinishedWidth: number;
+  currentStepStrokeWidth: number;
+  stepStrokeWidth: number;
+  stepStrokeCurrentColor: string;
+  stepStrokeFinishedColor: string;
+  stepStrokeUnFinishedColor: string;
+  separatorFinishedColor: string;
+  separatorUnFinishedColor: string;
+  stepIndicatorFinishedColor: string;
+  stepIndicatorUnFinishedColor: string;
+  stepIndicatorCurrentColor: string;
+  stepIndicatorLabelFontSize: number;
+  currentStepIndicatorLabelFontSize: number;
+  stepIndicatorLabelCurrentColor: string;
+  stepIndicatorLabelFinishedColor: string;
+  stepIndicatorLabelUnFinishedColor: string;
+  labelColor: string;
+  labelSize: number;
+  labelAlign:
+    | 'center'
+    | 'flex-start'
+    | 'flex-end'
+    | 'stretch'
+    | 'baseline'
+    | undefined;
+  currentStepLabelColor: string;
+  labelFontFamily?: string;
+}
+
+export interface StepIndicatorRef {
+  progressAnim: Animated.Value;
+  sizeAnim: Animated.Value;
+  staleSizeAnim: Animated.Value;
+  borderRadiusAnim: Animated.Value;
+  effectCurrentPosition: () => void;
+  onCurrentPositionChanged: (position: number) => void;
+  getStepStatus: (position: number) => string;
+  customStyles: StepIndicatorStyles;
+  setCustomStyles: React.Dispatch<
+    React.SetStateAction<DefaultStepIndicatorStyles>
+  >;
+  width: number;
+  height: number;
+  progressBarSize: number;
+  setProgressBarSize: (size: number) => void;
+  setWidth: React.Dispatch<React.SetStateAction<number>>;
+  setHeight: React.Dispatch<React.SetStateAction<number>>;
+}

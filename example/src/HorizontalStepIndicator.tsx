@@ -3,7 +3,6 @@ import * as React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import StepIndicator from 'react-native-step-indicator';
 import Swiper from 'react-native-swiper';
-import { MaterialIcons } from '@expo/vector-icons';
 
 const PAGES = ['Page 1', 'Page 2', 'Page 3', 'Page 4', 'Page 5'];
 
@@ -76,45 +75,45 @@ const thirdIndicatorStyles = {
   currentStepLabelColor: '#7eaec4',
 };
 
-const getStepIndicatorIconConfig = ({
-  position,
-  stepStatus,
-}: {
-  position: number;
-  stepStatus: string;
-}) => {
-  const iconConfig = {
-    name: 'feed',
-    color: stepStatus === 'finished' ? '#ffffff' : '#fe7013',
-    size: 15,
-  };
-  switch (position) {
-    case 0: {
-      iconConfig.name = 'shopping-cart';
-      break;
-    }
-    case 1: {
-      iconConfig.name = 'location-on';
-      break;
-    }
-    case 2: {
-      iconConfig.name = 'assessment';
-      break;
-    }
-    case 3: {
-      iconConfig.name = 'payment';
-      break;
-    }
-    case 4: {
-      iconConfig.name = 'track-changes';
-      break;
-    }
-    default: {
-      break;
-    }
-  }
-  return iconConfig;
-};
+// const getStepIndicatorIconConfig = ({
+//   position,
+//   stepStatus,
+// }: {
+//   position: number;
+//   stepStatus: string;
+// }) => {
+//   const iconConfig = {
+//     name: 'feed',
+//     color: stepStatus === 'finished' ? '#ffffff' : '#fe7013',
+//     size: 15,
+//   };
+//   switch (position) {
+//     case 0: {
+//       iconConfig.name = 'shopping-cart';
+//       break;
+//     }
+//     case 1: {
+//       iconConfig.name = 'location-on';
+//       break;
+//     }
+//     case 2: {
+//       iconConfig.name = 'assessment';
+//       break;
+//     }
+//     case 3: {
+//       iconConfig.name = 'payment';
+//       break;
+//     }
+//     case 4: {
+//       iconConfig.name = 'track-changes';
+//       break;
+//     }
+//     default: {
+//       break;
+//     }
+//   }
+//   return iconConfig;
+// };
 
 export default function App() {
   const [currentPage, setCurrentPage] = React.useState<number>(0);
@@ -132,7 +131,9 @@ export default function App() {
   };
 
   const renderStepIndicator = (params: any) => (
-    <MaterialIcons {...getStepIndicatorIconConfig(params)} />
+    <View>
+      <Text>{params.position}</Text>
+    </View>
   );
 
   const renderLabel = ({
